@@ -10,7 +10,7 @@ const weatherIcon = document.querySelector(".weather-icon");
 async function checkWeather(city){
     const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
     
-    if(response == 404){
+    if(response.status === 404){
         document.querySelector(".error").style.display = "block";
         document.querySelector(".weather").style.display = "none";
     } else {
@@ -27,7 +27,7 @@ if(data.weather[0].main ==  "Clouds"){
     weatherIcon.src = "images/clouds.png";
 }
 
-else if(data.weather[0].main == "clear"){
+else if(data.weather[0].main == "Clear"){
     weatherIcon.src = "images/clear.png";
 }
 else if(data.weather[0].main == "Rain"){
